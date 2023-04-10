@@ -1,0 +1,37 @@
+# Rust
+/target/
+**/*.rs.bk
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+dist/
+*.egg
+*.so
+*.swp
+*.swo
+*.swn
+*.pyc
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+*.venv
+
+# Data and models
+# data/
+# models/
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
