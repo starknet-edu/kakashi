@@ -1,25 +1,29 @@
 # =================================================
-# Configuración para text_extractor.py
+# Configuration for text_extractor.py
 # =================================================
 
 github:
   repos:
-    # - owner: huggingface
-    #   repo: blog
-    #   path: /
 
-    # - owner: huggingface
-    #   repo: transformers
-    #   path: docs/source/en
-
-    # - owner: huggingface
-    #   repo: peft
-    #   path: docs/source
-
-    # - owner: huggingface
-    #   repo: accelerate
-    #   path: docs/source
+    # Books
+    - owner: cairo-book
+      repo: cairo-book.github.io
+      path: src
     
+    - owner: starknet-edu
+      repo: starknetbook
+      path: chapters/book/modules
+
+    # Official Docs
+    - owner: starknet-io
+      repo: starknet-docs
+      path: components/Starknet/modules
+
+    - owner: starkware-libs
+      repo: cairo
+      path: docs/reference/src/components/cairo/modules
+    
+    # Tooling
     - owner: software-mansion
       repo: protostar
       path: website/docs/cairo-1
@@ -35,21 +39,18 @@ github:
     - owner: 0xs34n
       repo: starknet.js
       path: www/docs
+    
 
-    - owner: cairo-book
-      repo: cairo-book.github.io
-      path: src
-
-jsonl_database_path: data/docs_en_2023_06_29.jsonl
+jsonl_database_path: data/docs_en_2023_07_06.jsonl
 
 # =================================================
-# Configuración para ai_conversation.py
+# Configuration for ai_conversation.py
 # =================================================
 
-recreate_chroma_db: false
-chat_type: memory_chat # Puede ser qa_chat para preguntas y memory_chat para un chat con memoria
-embeddings_provider: openai # puede ser "cohere"
-embeddings_model: text-embedding-ada-002 # con cohere puede ser "embed-multilingual-v2.0"
+recreate_chroma_db: true
+chat_type: qa_chat # Can be qa_chat for questions and memory_chat for a chat with memory
+embeddings_provider: openai # Can be "cohere"
+embeddings_model: text-embedding-ada-002 # With cohere it can be "embed-multilingual-v2.0"
 chroma_db_name: chroma_docs
 
 chat_model:

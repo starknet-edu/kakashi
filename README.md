@@ -11,6 +11,26 @@ KAKASHI, which stands for "Knowledgeable Assistant Keen on Answering Starknet He
 
 The primary aim of this project is to simplify access to information documented in various GitHub repositories from the Starknet ecosystem using an interactive chatbot. Users can pose questions to the chatbot, which will search for the answer in the extracted documentation.
 
+## **Screenshots**
+
+Here are some screenshots of the KAKASHI in action:
+
+<table>
+  <tr>
+    <td>
+      <img src="images/example_1.png" alt="Screenshot 1" style="width: 100%;"/>
+    </td>
+    <td>
+      <img src="images/example_2.png" alt="Screenshot 2" style="width: 100%;"/>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="images/example_3.png" alt="Screenshot 3" style="width: 50%;"/>
+    </td>
+  </tr>
+</table>
+
 ## **Configuration**
 
 The project's operation can be manipulated through the **`config.yaml`** file. To use the project from scratch, follow these steps:
