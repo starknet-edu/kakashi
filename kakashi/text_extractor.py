@@ -23,10 +23,11 @@ def preprocess_text(text: str) -> str:
     text = re.sub(r"<[^>]*>", "", text)
     text = re.sub(r"http\S+|www.\S+", "", text)
     text = re.sub(r"Copyright.*", "", text)
+    text = re.sub(r"\[NOTE\].*====", "", text)
     text = text.replace("\n", " ")
     text = emoji.demojize(text)
     text = re.sub(r":[a-z_&+-]+:", "", text)
-    return text
+    return text.strip()
 
 
 def download_file(url: str, repo_info: dict, jsonl_file_name: str) -> None:
@@ -38,8 +39,14 @@ def download_file(url: str, repo_info: dict, jsonl_file_name: str) -> None:
         repo_info (dict): Information about the repository from where the file is downloaded.
         jsonl_file_name (str): Name of the JSONL file where the downloaded file is saved.
     """
-    response = requests.get(url)
     filename = url.split("/")[-1]
+    
+    # Check if the file is "nav.adoc", if so, then return without downloading
+    if filename == "nav.adoc":
+        print(f"Skipping file: {filename}")
+        return
+
+    response = requests.get(url)
     text = response.text
 
     if text is not None and isinstance(text, str):
@@ -58,6 +65,7 @@ def download_file(url: str, repo_info: dict, jsonl_file_name: str) -> None:
             jsonl_file.write(json.dumps(file_dict) + "\n")
     else:
         print(f"Unexpected text: {text}")
+
 
 
 def process_directory(
@@ -95,7 +103,7 @@ def process_directory(
         files = response.json()
         for file in files:
             if file["type"] == "file" and (
-                file["name"].endswith(".mdx") or file["name"].endswith(".md")
+                file["name"].endswith(".mdx") or file["name"].endswith(".md") or file["name"].endswith(".adoc")
             ):
                 print(colored(f"Downloading document: {file['name']}", "green"))
                 print(colored(f"Download URL: {file['download_url']}", "cyan"))
