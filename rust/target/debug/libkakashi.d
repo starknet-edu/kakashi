@@ -1,1 +1,0 @@
-/Users/espejelomar/StarkNet/kakashi/rust/target/debug/libkakashi.rlib: /Users/espejelomar/StarkNet/kakashi/rust/src/generate_instruction.rs /Users/espejelomar/StarkNet/kakashi/rust/src/lib.rs /Users/espejelomar/StarkNet/kakashi/rust/src/utils.rs
