@@ -1,0 +1,68 @@
+# =================================================
+# Configuración para text_extractor.py
+# =================================================
+
+github:
+  repos:
+    # - owner: huggingface
+    #   repo: blog
+    #   path: /
+
+    # - owner: huggingface
+    #   repo: transformers
+    #   path: docs/source/en
+
+    # - owner: huggingface
+    #   repo: peft
+    #   path: docs/source
+
+    # - owner: huggingface
+    #   repo: accelerate
+    #   path: docs/source
+    
+    - owner: software-mansion
+      repo: protostar
+      path: website/docs/cairo-1
+
+    - owner: software-mansion
+      repo: starknet.py
+      path: docs
+
+    - owner: software-mansion
+      repo: starknet.py
+      path: website/pages/docs
+    
+    - owner: 0xs34n
+      repo: starknet.js
+      path: www/docs
+
+    - owner: cairo-book
+      repo: cairo-book.github.io
+      path: src
+
+jsonl_database_path: data/docs_en_2023_06_29.jsonl
+
+# =================================================
+# Configuración para ai_conversation.py
+# =================================================
+
+recreate_chroma_db: false
+chat_type: memory_chat # Puede ser qa_chat para preguntas y memory_chat para un chat con memoria
+embeddings_provider: openai # puede ser "cohere"
+embeddings_model: text-embedding-ada-002 # con cohere puede ser "embed-multilingual-v2.0"
+chroma_db_name: chroma_docs
+
+chat_model:
+  model_name: gpt-3.5-turbo
+  temperature: 0.9
+  max_tokens: 1000
+
+text_splitting:
+  chunk_size: 1600
+  chunk_overlap: 50
+
+document_retrieval:
+  k: 5
+
+conversation_chain:
+  verbose: false

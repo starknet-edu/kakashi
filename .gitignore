@@ -1,37 +1,17 @@
-# Rust
-/target/
-**/*.rs.bk
+# Vector database
+chroma_docs
 
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.pyc
-*.egg-info/
-dist/
-*.egg
-*.so
-*.swp
-*.swo
-*.swn
-*.pyc
 
-# Jupyter Notebooks
-.ipynb_checkpoints/
+# Poetry
+poetry.lock
 
-# Virtual environments
-venv/
+# Environments
+.env
+.venv
 env/
-*.venv
-
-# Data and models
-# data/
-# models/
-
-# Logs
-*.log
-
-# System files
-.DS_Store
-Thumbs.db
+venv/
+ENV/
+env.bak/
+venv.bak/
