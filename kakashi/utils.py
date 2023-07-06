@@ -8,10 +8,10 @@ from langchain.schema import Document
 
 class DocsJSONLLoader:
     """
-    Cargador de documentos de documentaciones en formato JSONL.
+    Loader for documents in JSONL format.
 
     Args:
-        file_path (str): Ruta al archivo JSONL a cargar.
+        file_path (str): Path to the JSONL file to load.
     """
 
     def __init__(self, file_path: str):
@@ -19,10 +19,10 @@ class DocsJSONLLoader:
 
     def load(self):
         """
-        Carga los documentos de la ruta del archivo especificada durante la inicialización.
+        Loads the documents from the file path specified during initialization.
 
         Returns:
-            Una lista de objetos Document.
+            A list of Document objects.
         """
         with jsonlines.open(self.file_path) as reader:
             documents = []
@@ -39,10 +39,10 @@ class DocsJSONLLoader:
 
 def load_config():
     """
-    Carga la configuración de la aplicación desde el archivo 'config.yaml'.
+    Loads the application configuration from the 'config.yaml' file.
 
     Returns:
-        Un diccionario con la configuración de la aplicación.
+        A dictionary with the application configuration.
     """
     root_dir = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(root_dir, "config.yaml")) as stream:
@@ -54,37 +54,37 @@ def load_config():
 
 def get_openai_api_key():
     """
-    Obtiene la clave API de OpenAI del entorno. Si no está disponible, detiene la ejecución del programa.
+    Gets the OpenAI API key from the environment. If it's not available, it stops the program execution.
 
     Returns:
-        La clave API de OpenAI.
+        The OpenAI API key.
     """
     openai_api_key = os.getenv("OPENAI_API_KEY")
     if not openai_api_key:
-        print("Por favor crea una variable de ambiente OPENAI_API_KEY.")
+        print("Please set OPENAI_API_KEY as an environment variable.")
         sys.exit()
     return openai_api_key
 
 
 def get_cohere_api_key():
     """
-    Obtiene la clave API de Cohere del entorno. Si no está disponible, solicita al usuario que la ingrese.
+    Gets the Cohere API key from the environment. If it's not available, it asks the user to enter it.
 
     Returns:
-        La clave API de Cohere.
+        The Cohere API key.
     """
     cohere_api_key = os.getenv("COHERE_API_KEY")
     if not cohere_api_key:
-        cohere_api_key = input("Por favor ingresa tu COHERE_API_KEY: ")
+        cohere_api_key = input("Please enter your COHERE_API_KEY: ")
     return cohere_api_key
 
 
 def get_file_path():
     """
-    Obtiene la ruta al archivo de base de datos JSONL especificado en la configuración de la aplicación.
+    Gets the path to the JSONL database file specified in the application configuration.
 
     Returns:
-        La ruta al archivo de base de datos JSONL.
+        The path to the JSONL database file.
     """
     config = load_config()
 
@@ -96,25 +96,25 @@ def get_file_path():
 
 def get_query_from_user() -> str:
     """
-    Solicita una consulta al usuario.
+    Asks the user for a query.
 
     Returns:
-        La consulta ingresada por el usuario.
+        The query entered by the user.
     """
     try:
         query = input()
         return query
     except EOFError:
-        print("Error: Input no esperado. Por favor intenta de nuevo.")
+        print("Error: Unexpected input. Please try again.")
         return get_query_from_user()
 
 
 def create_dir(path: str) -> None:
     """
-    Crea un directorio si no existe.
+    Creates a directory if it doesn't exist.
 
     Args:
-        path (str): Ruta del directorio a crear.
+        path (str): Path of the directory to create.
     """
     if not os.path.exists(path):
         os.makedirs(path)
@@ -122,10 +122,10 @@ def create_dir(path: str) -> None:
 
 def remove_existing_file(file_path: str) -> None:
     """
-    Elimina un archivo si existe.
+    Deletes a file if it exists.
 
     Args:
-        file_path (str): Ruta del archivo a eliminar.
+        file_path (str): Path of the file to delete.
     """
     if os.path.exists(file_path):
         os.remove(file_path)
